@@ -1,13 +1,16 @@
-# Ignore virtual environments
-venv/
-backend/venv/
-
 # Ignore Node modules
 frontend/node_modules/
 
 # Ignore build outputs
 frontend/build/
 backend/build/
+
+# Ignore virtual environments
+venv/
+backend/venv/
+
+# Ignore uploaded resumes or large files in backend/uploads
+backend/backend/uploads/
 
 # Ignore temporary files and logs
 *.log
