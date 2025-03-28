@@ -1,13 +1,14 @@
-# Python virtual environments
+# Ignore virtual environments
 venv/
 backend/venv/
 
-# Node modules for frontend
+# Ignore Node modules
 frontend/node_modules/
 
-# Build directories
+# Ignore build outputs
 frontend/build/
 backend/build/
 
-# Log files
+# Ignore temporary files and logs
 *.log
+*.tmp
