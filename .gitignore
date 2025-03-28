@@ -1,0 +1,14 @@
+# Ignore Python virtual environment
+venv/
+backend/venv/
+
+# Ignore Node modules
+frontend/node_modules/
+
+# Ignore build outputs
+build/
+dist/
+
+# Ignore other generated files
+*.log
+*.tmp
