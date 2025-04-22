@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 
 export default function Dashboard() {
   return (
-    <div className="min-h-screen bg-gradient-to-r from-blue-100 to-gray-200">
+    <div className="min-h-screen bg-gradient-to-r from-blue-50 to-purple-50">
       {/* Header */}
-      <header className="bg-blue-700 text-white py-6 shadow-md">
+      <header className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-500 text-white py-6 shadow-md rounded-b-2xl">
         <div className="container mx-auto px-4">
           <h1 className="text-4xl font-bold">Resume Analyzer & Optimizer</h1>
           <p className="mt-2 text-lg">
@@ -26,9 +26,9 @@ export default function Dashboard() {
             Get actionable insights to stand out and secure your ideal job.
           </p>
           <img
-            src="/assets/job-search.png"
+            src={`${process.env.PUBLIC_URL}/search.png`}  // Reference the image in the public folder
             alt="Job Search Illustration"
-            className="mx-auto mt-6 w-64 h-auto rounded-lg shadow-xl"
+            className="mx-auto mt-6 w-64 h-auto rounded-lg shadow-xl hover:scale-105 transition-transform duration-300"
           />
         </section>
 
@@ -41,13 +41,13 @@ export default function Dashboard() {
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Link
               to="/upload"
-              className="px-6 py-3 bg-blue-600 text-white font-semibold rounded hover:bg-blue-700 transition-colors"
+              className="px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-semibold rounded-lg shadow-md hover:from-purple-600 hover:to-pink-500 transition-all duration-300"
             >
               Upload Resume
             </Link>
             <Link
               to="/results"
-              className="px-6 py-3 bg-green-600 text-white font-semibold rounded hover:bg-green-700 transition-colors"
+              className="px-6 py-3 bg-gradient-to-r from-green-400 to-teal-500 text-white font-semibold rounded-lg shadow-md hover:from-green-500 hover:to-emerald-600 transition-all duration-300"
             >
               View Results
             </Link>
