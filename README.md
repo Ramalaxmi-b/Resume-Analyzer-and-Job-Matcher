@@ -1,88 +1,106 @@
 # Resume Analyzer & Job Matcher
 
-## 📌 Project Overview
-The **Resume Analyzer & Job Matcher** is an AI-powered web application designed to analyze resumes and match candidates with the most suitable job opportunities. The system leverages **Natural Language Processing (NLP)** and **Machine Learning (ML)** to evaluate resumes based on skills, experience, and job descriptions.
+Hi! 👋
+This is a project I built to help job seekers get instant feedback on their resumes and see how well they match with job descriptions. It uses machine learning and natural language processing to extract skills, compare resumes with job descriptions, suggest improvements, and even recommend roles.
 
-## 🚀 Features
-- ✅ **Resume Parsing**: Extracts key details such as name, skills, experience, and education.
-- ✅ **Skill Matching**: Compares candidate skills with job descriptions.
-- ✅ **Job Recommendation**: Uses AI to recommend the best job matches.
-- ✅ **Keyword Optimization**: Highlights missing keywords to improve resume ranking.
-- ✅ **PDF & DOCX Support**: Accepts resumes in multiple formats.
-- ✅ **User Dashboard**: Allows users to view past analyses and job suggestions.
-- ✅ **API Integration**: Connects with job portals like LinkedIn, Indeed, etc.
+---
 
-## 🛠️ Tech Stack
-### **Frontend**
-- React.js (Material UI for UI Components)
-- TailwindCSS
+## 🔍 What It Does
 
-### **Backend**
-- Flask (Python-based backend API)
-- MongoDB (Database for storing user resumes and job matches)
-- Flask-CORS (For handling cross-origin requests)
-- Gunicorn (For production deployment)
+* **Resume Parsing:** Upload your resume (PDF or DOCX) and the app will extract your details like skills and experience.
+* **Job Description Matching:** Paste a job description, and it’ll compare it with your resume to calculate a match percentage.
+* **Skill Suggestions:** Highlights which skills you're missing based on the JD.
+* **Interview Questions:** Generates relevant technical and non-technical questions based on matched skills.
+* **Preparation Plan:** Gives you a learning path to improve missing skills.
+* **AI Resume Feedback:** Suggests improvements to make your resume better.
+* **Job Role Recommendations:** Based on your resume, it suggests possible roles you might fit into.
+* **Gamified Skill Tracker:** A fun progress bar to visualize which skills you already have and what you’re missing.
 
-### **AI & NLP**
-- Natural Language Toolkit (NLTK)
-- Spacy
-- Sentence Transformers (BERT for text similarity)
-- Scikit-learn & Pandas (For processing and matching logic)
+---
 
-## 📂 Folder Structure
-```bash
+## 🧠 Tech Stack
+
+**Frontend:**
+
+* React.js
+* TailwindCSS
+
+**Backend:**
+
+* Flask (Python)
+* REST APIs
+* CORS enabled
+* File parsing (PDF/DOCX)
+
+**ML/NLP:**
+
+* BERT-based sentence embeddings for similarity
+* Custom skill/topic extractors
+* Resume cleaning and preprocessing
+
+---
+
+## 📁 Folder Structure
+
+```
 resume-analyzer-job-matcher/
-│-- backend/                  # Flask backend
+│
+├── backend/
 │   ├── app.py                # Main Flask app
-│   ├── models.py             # ML models and database schema
-│   ├── routes.py             # API endpoints
-│   ├── requirements.txt      # Python dependencies
-│   ├── utils/                # Helper functions (parsing, matching, etc.)
+│   ├── routes/               # Endpoints for match score, upload, etc.
+│   ├── parsers/              # File extractors for PDF and DOCX
+│   └── utils/                # Skill and text processing logic
 │
-│-- frontend/                 # React frontend
-│   ├── src/
-│   │   ├── components/       # Reusable UI components
-│   │   ├── pages/            # Main pages (Home, Upload, Dashboard)
-│   │   ├── App.js            # Main React app
-│   │   ├── index.js          # Entry point
-│
-│-- README.md                 # Project documentation
+└── frontend/
+    └── src/
+        ├── components/       # React components
+        ├── App.js            # Main app
+        └── index.js          # Entry point
 ```
 
-## 🔧 Installation & Setup
-### 1️⃣ **Clone the Repository**
+---
+
+## 🛠 How to Run Locally
+
+### 📦 Clone the project
+
 ```bash
-git clone https://github.com/yourusername/resume-analyzer-job-matcher.git
-cd resume-analyzer-job-matcher
+git clone https://github.com/Ramalaxmi-b/Resume-Analyzer-and-Job-Matcher.git
+cd Resume-Analyzer-and-Job-Matcher
 ```
-### 2️⃣ **Backend Setup**
+
+### ▶️ Backend (Flask)
+
 ```bash
 cd backend
-python3 -m venv env
-source env/bin/activate   # On Windows use `env\Scripts\activate`
+python -m venv env
+source env/bin/activate      # Windows: env\Scripts\activate
 pip install -r requirements.txt
-flask run  # Starts the backend
+flask run
 ```
-### 3️⃣ **Frontend Setup**
+
+### 💻 Frontend (React)
+
 ```bash
 cd frontend
 npm install
-npm start  # Runs the React app
+npm start
 ```
 
+---
 
-## 📜 License
-This project is licensed under the MIT License.
+## ✨ Why I Built This
 
-## 🤝 Contributing
-1. Fork the repository.
-2. Create a new branch (`git checkout -b feature-name`).
-3. Commit changes (`git commit -m 'Added new feature'`).
-4. Push to the branch (`git push origin feature-name`).
-5. Open a Pull Request.
+I wanted to create something practical and helpful for job seekers, especially freshers like me. It’s a way to apply everything I’ve been learning—from backend APIs and ML to frontend React design.
+
+---
 
 ## 📬 Contact
-For any issues or suggestions, feel free to reach out:
-📧 **Email:** your.email@example.com  
-🐙 **GitHub:** [yourusername](https://github.com/yourusername)
+
+Have feedback or questions?
+
+* 📧 Email: [ramalaxmib671@gmail.com](mailto:ramalaxmib671@gmail.com)
+* 🌐 GitHub: [@Ramalaxmi-b](https://github.com/Ramalaxmi-b)
+
+---
 
