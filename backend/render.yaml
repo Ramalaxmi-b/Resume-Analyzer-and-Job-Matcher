@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: resume-analyzer-backend
+    runtime: python
+    region: oregon
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
+    envVars:
+      - key: FLASK_ENV
+        value: production
