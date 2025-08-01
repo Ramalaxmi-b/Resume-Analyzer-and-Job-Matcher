@@ -11,6 +11,7 @@ import nltk
 import PyPDF2
 import docx
 from nltk.corpus import stopwords
+from utils.preprocess import clean_text
 
 # Load SpaCy NLP Model
 nlp = spacy.load("en_core_web_sm")
@@ -25,7 +26,9 @@ def extract_text_from_pdf(pdf_path):
     with open(pdf_path, "rb") as file:
         reader = PyPDF2.PdfReader(file)
         for page in reader.pages:
-            text += page.extract_text() + "\n"
+            page_text = page.extract_text()
+            if page_text:
+                text += page_text + "\n"
     return text
 
 def extract_text_from_docx(docx_path):
@@ -57,23 +60,33 @@ def extract_name(text):
             return ent.text
     return None
 
+def extract_education(text):
+    """Extracts education information from text."""
+    education_keywords = ["bachelor", "master", "phd", "b.tech", "m.tech", "bsc", "msc", "mba", "degree", "university", "college"]
+    found = []
+    for line in text.split("\n"):
+        for keyword in education_keywords:
+            if keyword in line.lower():
+                found.append(line.strip())
+    return found
+
 def preprocess_text(text):
-    """Removes stopwords, special characters, and converts text to lowercase."""
-    text = re.sub(r"[^a-zA-Z\s]", "", text)  # Remove special characters
-    words = text.lower().split()
-    return " ".join([word for word in words if word not in STOPWORDS])
+    """Cleans and preprocesses the text."""
+    return clean_text(text)
 
 def parse_resume(file_path):
     """Parses resume and extracts key details."""
-    file_ext = file_path.split(".")[-1]
-    
-    if file_ext == "pdf":
-        text = extract_text_from_pdf(file_path)
-    elif file_ext == "docx":
-        text = extract_text_from_docx(file_path)
-    else:
-        with open(file_path, "r", encoding="utf-8") as f:
-            text = f.read()
+    file_ext = file_path.split(".")[-1].lower()
+    try:
+        if file_ext == "pdf":
+            text = extract_text_from_pdf(file_path)
+        elif file_ext == "docx":
+            text = extract_text_from_docx(file_path)
+        else:
+            with open(file_path, "r", encoding="utf-8") as f:
+                text = f.read()
+    except Exception as e:
+        return {"success": False, "error": str(e)}
 
     # Extract Information
     text_cleaned = preprocess_text(text)
@@ -81,13 +94,17 @@ def parse_resume(file_path):
     phone = extract_phone(text)
     skills = extract_skills(text_cleaned)
     name = extract_name(text)
+    education = extract_education(text)
 
     return {
+        "success": True,
         "name": name,
         "email": email[0] if email else None,
         "phone": phone[0] if phone else None,
         "skills": skills,
-        "raw_text": text_cleaned
+        "education": education,
+        "raw_text": text_cleaned,
+        "preview": text_cleaned[:200] + "..." if len(text_cleaned) > 200 else text_cleaned
     }
 
 # Example Usage

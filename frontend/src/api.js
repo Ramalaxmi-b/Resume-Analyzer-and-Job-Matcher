@@ -46,3 +46,21 @@ export const matchResume = async (resumeText, jobDescription) => {
         throw error;
     }
 };
+
+// Analyze Resume and Job Description API Call
+export const analyzeResume = async (resumeText, jobDescription) => {
+    try {
+        const response = await axios.post(`${API_BASE_URL}/analyze`, {
+            resume_text: resumeText,
+            job_description: jobDescription
+        }, {
+            headers: { "Content-Type": "application/json" }
+        });
+        const data = response.data; // full analysis object
+        localStorage.setItem("analyzeResults", JSON.stringify(data));
+        return data;
+    } catch (error) {
+        console.error("Error analyzing resume:", error);
+        throw error;
+    }
+};
